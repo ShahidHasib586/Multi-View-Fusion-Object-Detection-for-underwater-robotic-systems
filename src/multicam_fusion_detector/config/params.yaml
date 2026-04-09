@@ -1,0 +1,20 @@
+multicam_fusion_detector:
+  ros__parameters:
+    # camera image topics
+    cam_topics: ["/pc_usb0/image_raw", "/pc_usb1/image_raw"] # enhancement weights
+    enhance_ckpt: "" #"/home/shahid/bluerov/bluerov_ws/src/multicam_fusion_detector/models/uie_best.pt"
+    enhance_img_size: 128
+    enhance_ema: 0.90   # smoothing (good for surface video stability)
+
+    # object detector
+    yolo_model: "yolov8n.pt"     # auto-downloads first time
+    yolo_imgsz: 640
+    yolo_conf: 0.25
+    yolo_iou: 0.45
+    yolo_device: "cuda"         # "cpu" if needed
+
+    # output topics
+    out_prefix: "/fusion"
+
+    # sync settings
+    sync_slop_sec: 0.15
